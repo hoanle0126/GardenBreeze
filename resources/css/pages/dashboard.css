@@ -1,0 +1,17 @@
+@layer components {
+    .dashboard {
+        @apply py-[30px] px-[60px] flex flex-col gap-[30px];
+
+        &__overview{
+            @apply w-full grid lg:grid-cols-12 grid-cols-6 gap-[30px];
+
+            &--left {
+                @apply col-span-6 grid sm:grid-cols-12 grid-cols-6 gap-[30px];
+
+                &-items {
+                    @apply col-span-6 card  h-[210px];
+                }
+            }
+        }
+    }
+}

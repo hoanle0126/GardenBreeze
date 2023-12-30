@@ -10,3 +10,6 @@
 @import "ultilities/scroll.css";
 /* Components */
 @import "components/header.css";
+@import "components/card.css";
+/* Page */
+@import "pages/dashboard.css";
