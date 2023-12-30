@@ -1,0 +1,56 @@
+@layer utilities {
+    .card {
+      @apply bg-white shadow-md rounded-xl;
+    }
+  
+    .overview__card {
+      @apply p-[20px] pb-[10px] relative;
+      &--header {
+        @apply text-lg font-[600] flex items-center gap-[10px];
+      }
+      &--subheader {
+        @apply text-default font-[600] text-gray-400;
+      }
+      &--badge {
+        @apply w-[45px] h-[25px] bg-green/30 rounded-lg text-sm flex items-center justify-center pb-[3px] text-green;
+      }
+      &--contents {
+        @apply h-[100px] w-full;
+        &:not(:first-child) {
+          @apply pr-[30px];
+        }
+      }
+    }
+  
+    .badge {
+      @apply px-[10px] w-fit py-[2px] h-[20px] flex-center rounded-md text-[12px] font-[600];
+      &__stock {
+        @apply bg-blue/20 text-blue;
+      }
+      &__outStock {
+        @apply bg-red/20 text-red;
+      }
+      &__lowStock {
+        @apply bg-orange-primary/20 text-orange-primary;
+      }
+      &__pending {
+        @apply bg-orange-primary/20 text-orange-primary;
+      }
+      &__refund {
+        @apply bg-purple-600/20 text-purple-600;
+      }
+      &__completed {
+        @apply bg-green/20 text-green;
+      }
+      &__delivering {
+        @apply bg-blue/20 text-blue;
+      }
+      &__cancelled {
+        @apply bg-red/20 text-red;
+      }
+      &__copper {
+        @apply bg-amber-700/20 text-amber-700;
+      }
+    }
+  }
+  

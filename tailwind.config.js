@@ -15,6 +15,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                primary: "#73c93d",
+                secondary: "#FCB142",
+            },
+            backgroundImage: {
+                landing: "url('resources/assets/background1.png')",
+                footer: "url('resources/assets/footer.png')",
+                contact: "url('resources/assets/contact.png')",
+            }
         },
     },
 

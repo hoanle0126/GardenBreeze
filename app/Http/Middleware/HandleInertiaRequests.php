@@ -2,6 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\ProductResource;
+use App\Http\Resources\UserResource;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -32,8 +36,10 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->user(),
-            ],
+                'user' => $request->user() ? new UserResource($request->user()) : $request->user(),
+                "categories" => Category::all(),
+                "products" => ProductResource::collection(Product::all()),
+            ]
         ];
     }
 }
