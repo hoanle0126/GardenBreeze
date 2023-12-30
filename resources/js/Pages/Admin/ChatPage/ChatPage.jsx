@@ -1,9 +1,11 @@
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Button } from "@mui/material";
+import { Head } from "@inertiajs/react";
+import { Avatar, Button } from "@mui/material";
 
 function ChatPage() {
     return (
         <AdminLayout>
+            <Head title="Chat"/>
             <section className="header__top">
                 <span className="header__top--header">Chat</span>
                 <div className="header__top--breadcrumbs">
@@ -58,7 +60,7 @@ function ChatPage() {
                                 </div>
                             </li>
                             <li className="w-full flex justify-end">
-                                <div className="max-w-[50%] bg-green/30 px-[20px] py-[5px] text-right rounded-2xl break-words">
+                                <div className="max-w-[50%] bg-primary/30 px-[20px] py-[5px] text-right rounded-2xl break-words">
                                     ba
                                 </div>
                             </li>

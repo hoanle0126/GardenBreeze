@@ -80,8 +80,11 @@ const AdminSidebar = ({ side }) => {
             id: 4,
             icon: CalendarIcon,
             name: "Calendar",
-            to: "/calendar",
-            active: active === 4 ? true : false,
+            to: "/admin/calendar",
+            active:
+                active === 4 || url.startsWith("/admin/calendar")
+                    ? true
+                    : false,
         },
     ];
 

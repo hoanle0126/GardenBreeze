@@ -12,7 +12,7 @@ const CartIconButton = () => {
             color="primary"
             onClick={() => router.visit(route("cart.index"))}
         >
-            <Badge badgeContent={props.auth.user.cart.product.length} color="primary">
+            <Badge badgeContent={props.auth.user.cart?.product.length} color="primary">
                 <CartIcon
                     primary={ColorContext.palette.primary.main}
                     secondary={ColorContext.palette.secondary.main}
