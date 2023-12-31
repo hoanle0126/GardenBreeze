@@ -9,6 +9,7 @@ import ProductItemIcon from "icons/ProductItem";
 import { alpha } from "@mui/material";
 import CalendarIcon from "icons/calendar";
 import { Link, usePage } from "@inertiajs/react";
+import { primary } from "@/Contexts/ColorContext";
 
 /* eslint-disable react/prop-types */
 const AdminSidebar = ({ side }) => {
@@ -32,8 +33,8 @@ const AdminSidebar = ({ side }) => {
             name: "Product",
             active:
                 active === 2 ||
-                url.startsWith("/admin/stocks") ||
-                url.startsWith("/admin/orders") ||
+                url.startsWith("/admin/stock") ||
+                url.startsWith("/admin/order") ||
                 url.startsWith("/admin/categories")
                     ? true
                     : false,
@@ -42,17 +43,17 @@ const AdminSidebar = ({ side }) => {
                 {
                     id: 1,
                     name: "Stock",
-                    to: "/stock",
+                    to: "/admin/stock",
                 },
                 {
                     id: 2,
                     name: "Order",
-                    to: "/order",
+                    to: "/admin/order",
                 },
                 {
                     id: 3,
                     name: "Category",
-                    to: "/category",
+                    to: "/admin/categories",
                 },
             ],
         },
@@ -61,18 +62,23 @@ const AdminSidebar = ({ side }) => {
             icon: PeopleIcon,
             childrenIcon: PersonIcon,
             name: "Member",
-            active: active === 3 ? true : false,
+            active:
+                active === 3 ||
+                url.startsWith("/admin/customer") ||
+                url.startsWith("/admin/staff")
+                    ? true
+                    : false,
             heightChild: "70px",
             children: [
                 {
                     id: 1,
                     name: "Customer",
-                    to: "/customer",
+                    to: "/admin/customer",
                 },
                 {
                     id: 2,
                     name: "Staff",
-                    to: "/staff",
+                    to: "/admin/staff",
                 },
             ],
         },

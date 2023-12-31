@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\StockController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,5 +17,18 @@ Route::middleware('auth')->group(function () {
     });
     Route::get("/admin/calendar", function () {
         return Inertia::render("Admin/CalendarPage/CalendarPage");
+    });
+    Route::get("/admin/categories", function () {
+        return Inertia::render("Admin/CategoriesPage/CategoriesPage");
+    });
+    Route::resource("/admin/stock", StockController::class);
+    Route::get("/admin/order", function () {
+        return Inertia::render("Admin/CategoriesPage/CategoriesPage");
+    });
+    Route::get("/admin/customer", function () {
+        return Inertia::render("Admin/CategoriesPage/CategoriesPage");
+    });
+    Route::get("/admin/staff", function () {
+        return Inertia::render("Admin/CategoriesPage/CategoriesPage");
     });
 });

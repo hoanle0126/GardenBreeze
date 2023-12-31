@@ -5,6 +5,7 @@ import { Link, router, usePage } from "@inertiajs/react";
 import LogoEvergreen from "resources/assets/logo";
 import { primary } from "@/Contexts/ColorContext";
 import CartIconButton from "../IconButton/Cart";
+import MessageIconButton from "../IconButton/Message";
 
 const ClientHeader = ({ user }) => {
     const { url } = usePage();
@@ -53,9 +54,10 @@ const ClientHeader = ({ user }) => {
                 </Link>
             </div>
             {user ? (
-                <div className="h-[60px] flex items-center justify-end gap-[30px]">
+                <div className="h-[60px] flex items-center justify-end gap-[10px]">
+                    <MessageIconButton/>
                     <CartIconButton />
-                    <AvatarClient user={user}/>
+                    <div className="ml-[10px]"><AvatarClient user={user}/></div>
                 </div>
             ) : (
                 <div className="h-[60px] flex items-center justify-end gap-[10px]">

@@ -31,10 +31,10 @@
           @apply bg-red/20 text-red;
       }
       &__lowStock {
-          @apply bg-orange-primary/20 text-orange-primary;
+          @apply bg-secondary/20 text-secondary;
       }
       &__pending {
-          @apply bg-orange-primary/20 text-orange-primary;
+          @apply bg-secondary/20 text-secondary;
       }
       &__refund {
           @apply bg-purple-600/20 text-purple-600;
