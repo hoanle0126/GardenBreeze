@@ -2,8 +2,8 @@ import { primary, secondary } from "@/Contexts/ColorContext";
 import { formatCurrency } from "@/Functions/FormatCurrency";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Button, IconButton, Menu, Rating, alpha } from "@mui/material";
-import PopupState from "material-ui-popup-state";
+import { Button, IconButton, Menu, MenuItem, Rating, alpha } from "@mui/material";
+import PopupState, { bindMenu, bindTrigger } from "material-ui-popup-state";
 import { FilterMatchMode } from "primereact/api";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import ThreeDotIcon from "resources/assets/icons/ThreeDot";
 import SearchIcon from "resources/assets/icons/search";
 
-function StockPage({ products }) {
+function StockPage({ stocks }) {
     const [globalFilterValue, setGlobalFilterValue] = useState("");
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [filters, setFilters] = useState({
@@ -174,7 +174,7 @@ function StockPage({ products }) {
                     rows={5}
                     rowsPerPageOptions={[5, 10, 25, 50]}
                     header={header}
-                    value={products}
+                    value={stocks}
                     selectionMode={"checkbox"}
                     selection={selectedProducts}
                     onSelectionChange={(e) => setSelectedProducts(e.value)}

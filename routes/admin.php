@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Api\StockController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Resources\OrderResource;
+use App\Models\Category;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -19,11 +22,15 @@ Route::middleware('auth')->group(function () {
         return Inertia::render("Admin/CalendarPage/CalendarPage");
     });
     Route::get("/admin/categories", function () {
-        return Inertia::render("Admin/CategoriesPage/CategoriesPage");
+        return Inertia::render("Admin/CategoriesPage/CategoriesPage",[
+            "categories" => Category::all()
+        ]);
     });
     Route::resource("/admin/stock", StockController::class);
     Route::get("/admin/order", function () {
-        return Inertia::render("Admin/CategoriesPage/CategoriesPage");
+        return Inertia::render("Admin/OrderPage/OrderPage", [
+            "orders" => OrderResource::collection(Order::all())
+        ]);
     });
     Route::get("/admin/customer", function () {
         return Inertia::render("Admin/CategoriesPage/CategoriesPage");

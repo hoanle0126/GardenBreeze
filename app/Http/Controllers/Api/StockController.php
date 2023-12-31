@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\StockResource;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -14,7 +15,9 @@ class StockController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Admin/StocksPage/StockPage");
+        return Inertia::render("Admin/StocksPage/StockPage", [
+            "stocks" => StockResource::collection(Stock::all())
+        ]);
     }
 
     /**
