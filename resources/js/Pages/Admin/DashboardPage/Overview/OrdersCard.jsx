@@ -1,10 +1,6 @@
-import { alpha, styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
 import { useEffect, useState } from "react";
 import { primary } from "@/Contexts/ColorContext";
+import { Box, LinearProgress, alpha, linearProgressClasses, styled } from "@mui/material";
 
 const BorderLinearProgress = styled(LinearProgress)(() => ({
   height: 10,

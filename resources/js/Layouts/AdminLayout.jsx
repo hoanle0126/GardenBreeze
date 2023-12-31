@@ -8,7 +8,7 @@ function AdminLayout({ children, className, user }) {
     const [side, setSide] = useState(true);
     return (
         <>
-            <AdminHeader side={side} setSide={setSide}/>
+            <AdminHeader side={side} setSide={setSide} />
             <AdminSidebar side={side} />
             <main
                 className={`absolute top-[60px] duration-300 py-[30px] px-[60px] flex flex-col gap-[30px] ${

@@ -4,7 +4,7 @@ import "../css/app.css";
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
-import { ThemeProvider, alpha } from "@mui/material";
+import { CssBaseline, ThemeProvider, alpha } from "@mui/material";
 import ColorContext, { primary } from "./Contexts/ColorContext";
 import { ApiContext } from "./Contexts/ApiContext";
 
@@ -21,7 +21,9 @@ createInertiaApp({
         root.render(
             <ApiContext>
                 <ThemeProvider theme={ColorContext}>
-                    <App {...props} />
+                    <CssBaseline>
+                        <App {...props} />
+                    </CssBaseline>
                 </ThemeProvider>
             </ApiContext>
         );

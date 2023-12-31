@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\AuthEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -37,6 +38,7 @@ class AuthenticatedSessionController extends Controller
         if ($request->user()->getRoleNames()[0] === "Admin") {
             return redirect("/admin/dashboard");
         }
+        broadcast(new AuthEvent($request->user(), " {{$request->user()->name}} Join"));
         return redirect(RouteServiceProvider::HOME);
     }
 

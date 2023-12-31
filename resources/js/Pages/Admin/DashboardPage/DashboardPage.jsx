@@ -8,7 +8,6 @@ import NewCustomesCard from "./Overview/NewCustomesCard";
 import RightCard from "./Overview/RightCard";
 
 export default function Dashboard({ auth }) {
-    console.log(auth.user);
     return (
         <AdminLayout user={auth.user}>
             <Head title="Dashboard" />
