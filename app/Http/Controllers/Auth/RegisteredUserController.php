@@ -42,14 +42,13 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        
+        event(new Registered($user));
 
         $user->assignRole("Client");
         $user->Cart()->create();
 
         Auth::login($user);
-        if ($user->getRoleNames()[0] == "Admin") {
-            return redirect("/admin/dashboard");
-        }
-        return redirect(RouteServiceProvider::HOME);
+        return redirect("verify-email");
     }
 }

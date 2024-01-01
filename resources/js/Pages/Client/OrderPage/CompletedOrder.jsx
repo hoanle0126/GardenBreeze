@@ -4,15 +4,18 @@ import { DataTable } from "primereact/datatable";
 import { Button, Modal, Rating } from "@mui/material";
 import { useState } from "react";
 import { formatCurrency } from "@/Functions/FormatCurrency";
+import { router, usePage } from "@inertiajs/react";
 
-const CompletedOrder = ({ orders }) => {
+const CompletedOrder = () => {
+  const {props} = usePage()
+  const orders = props.orders
   const [open, setOpen] = useState(false);
   const [model, setModel] = useState();
   const [review, setReview] = useState();
 
   const handleReview = (e) => {
     e.preventDefault();
-    
+    router.post(route("reviews.store"),review)
   };
 
   const handleOpen = (id) => {
@@ -111,7 +114,7 @@ const CompletedOrder = ({ orders }) => {
   return (
     <div>
       <DataTable
-        value={orders?.completed}
+        value={orders.filter(o=>o.status==="Completed")}
         tableStyle={{ minWidth: "50rem", marginTop: "-40px" }}
       >
         <Column field="id" body={orderTable}></Column>

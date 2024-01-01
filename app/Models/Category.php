@@ -18,11 +18,6 @@ class Category extends Model
 
     public function product()
     {
-        return $this->hasMany(Product::class);
-    }
-
-    public function order()
-    {
-        return $this->belongsToMany(Order::class, "category_order")->with("product");
+        return $this->hasMany(Product::class)->with("revenue","price","stock");
     }
 }

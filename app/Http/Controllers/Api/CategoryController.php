@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -14,7 +17,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        $categories = Category::with("product")->get();
+        foreach ($categories as $category) {
+            $category["revenues"] = $category['product']->sum("revenue.revenue"); 
+        }
+        $collection = new Collection($categories);
+        return [
+            "first" => $collection->sortByDesc("revenues")->take(1)->values(),
+            "second" => $collection->sortByDesc("revenues")->skip(1)->take(1)->values(),
+            "other" => $collection->sortByDesc("revenues")->skip(2)->sum("revenues"),
+        ];
     }
 
     /**

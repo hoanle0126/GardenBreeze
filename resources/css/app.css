@@ -8,6 +8,7 @@
 /* Ultilities */
 @import "ultilities/center.css";
 @import "ultilities/scroll.css";
+@import "ultilities/tab.css";
 /* Components */
 @import "components/header.css";
 @import "components/card.css";

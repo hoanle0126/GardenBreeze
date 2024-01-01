@@ -37,6 +37,6 @@ class Order extends Model {
     }
 
     public function category(){
-        return $this->belongsToMany(Category::class,"category_order");
+        return $this->belongsToMany(Category::class,"order_product");
     }
 }

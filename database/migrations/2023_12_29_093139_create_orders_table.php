@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('status');
+            $table->double("total_price")->nullable();
             $table->timestamps();
         });
     }

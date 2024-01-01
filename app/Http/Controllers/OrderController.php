@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Revenue;
+use App\Models\Stock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class OrderController extends Controller
@@ -43,9 +47,18 @@ class OrderController extends Controller
                 'quantity' => $product['pivot']['quantity'],
                 'category_id' => $product['category_id']
             ]);
-            $total += $product['price']['base_price'] * $product['pivot']['quantity'];
+            $total += (($product['price']['base_price'] + ($product['price']['base_price'] * $product['price']['sales'] / 100)) * $product['pivot']['quantity']);
             $cart = Cart::query()->where('user_id', $request->user()->id)->first();
             $cart->Product()->detach($product['id']);
+            $stock = Stock::query()->where('product_id', $product['id'])->first();
+            $stock->update([
+                'quantity' => $stock->quantity - $product['pivot']['quantity']
+            ]);
+            $revenue = Revenue::query()->where('product_id', $product['id'])->first();
+            $revenue->update([
+                'revenue' => $revenue->revenue + ($product['price']['base_price'] + $product['price']['base_price'] * $product['price']['sales'] / 100) * $product['pivot']['quantity'],
+                'quantity' => $revenue->quantity + $product['pivot']['quantity']
+            ]);
         }
         $order->update([
             'total' => $total
@@ -63,9 +76,11 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order $order)
+    public function submit(Order $order)
     {
-        //
+        $order->update([
+            "status" => "Completed"
+        ]);
     }
 
     /**

@@ -1,9 +1,11 @@
 import { primary } from "@/Contexts/ColorContext";
+import { usePage } from "@inertiajs/react";
 import { alpha } from "@mui/material";
 import LogoEverprimary from "resources/assets/logo";
 
 
 function Footer() {
+  const {props} = usePage()
   return (
     <footer className="w-full h-[400px] bg-footer bg-cover flex justify-between px-[120px] p-[30px] shadow-md z-[1000]">
       <div className="flex flex-col gap-[20px]">
@@ -21,8 +23,8 @@ function Footer() {
       <div className="flex flex-col gap-[20px]">
         Contact Us
         <div className="flex flex-col">
-          <span>+(84) 356 84 690</span>
-          <span>nacy1924@gmail.com</span>
+          <span>{props.admin.phone}</span>
+          <span>{props.admin.email}</span>
         </div>
       </div>
       <div></div>

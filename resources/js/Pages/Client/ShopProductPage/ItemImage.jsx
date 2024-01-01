@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 /* eslint-disable react/prop-types */
 const ItemImage = ({ product }) => {
   const [selectImage, setSelectImage] = useState(product?.thumbnail);
+  console.log(product)
 
   return (
     <div className="w-[620px] h-[500px] flex gap-[20px]">

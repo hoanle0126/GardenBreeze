@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = ProductResource::collection(Product::all());
+        return ProductResource::collection(Product::all())->sum("revenue.revenue");
     }
 
     public function list(Request $request)

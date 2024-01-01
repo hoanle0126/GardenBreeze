@@ -10,7 +10,8 @@ import { useState } from "react";
 import BackIcon from "resources/assets/icons/back";
 
 function CartPage() {
-    const { props, url } = usePage();
+    const { props } = usePage();
+    console.log(props);
     const products = props.auth.user.cart.product;
     const { selectedProducts, setSelectedProducts } = useStateContext();
     const productBody = (item) => (
@@ -55,10 +56,8 @@ function CartPage() {
         </>
     );
 
-    const deleteCart = (id) => {};
-
     const actionBody = (item) => (
-        <IconButton onClick={() => deleteCart(item.id)}>
+        <IconButton onClick={() => router.post(`/cart-delete/${item.id}`)}>
             <Delete />
         </IconButton>
     );
@@ -120,7 +119,12 @@ function CartPage() {
                 </DataTable>
             </section>
             <section className="w-full justify-end flex">
-                <Button variant={"contained"} onClick={()=>router.visit("/payment")}>Buy</Button>
+                <Button
+                    variant={"contained"}
+                    onClick={() => router.visit("/payment")}
+                >
+                    Buy
+                </Button>
             </section>
         </ClientLayout>
     );

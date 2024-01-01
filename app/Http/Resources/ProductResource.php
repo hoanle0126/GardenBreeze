@@ -32,6 +32,7 @@ class ProductResource extends JsonResource
             'stock'=>$this->stock,
             'feature' => $this->feature,
             'review' => $this->reviews,
+            "revenue" => $this->revenue,
             'avg_rating' => $this->avg_rating,
             'created_at' => $this->created_at,
         ];

@@ -4,15 +4,14 @@ import { Column } from "primereact/column";
 import { Toast } from "primereact/toast";
 import { Avatar, Button, CircularProgress, IconButton } from "@mui/material";
 import TickIcon from "icons/tick";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, router, usePage } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { formatCurrency } from "@/Functions/FormatCurrency";
 
-function OrderPage({ orders }) {
-    console.log(orders);
+function OrderPage() {
+    const { props } = usePage();
     const [expandedRows, setExpandedRows] = useState(null);
     const toast = useRef(null);
-    const [loading, setLoading] = useState(false);
 
     const collapseAll = () => {
         setExpandedRows(null);
@@ -32,10 +31,7 @@ function OrderPage({ orders }) {
 
     const userTemplate = (item) => (
         <div className="flex items-center gap-[10px]">
-            <Avatar
-                src={item.user?.avatar}
-                sx={{width:40,height:40}}
-            />
+            <Avatar src={item.user?.avatar} sx={{ width: 40, height: 40 }} />
             <span>{item.user?.name}</span>
         </div>
     );
@@ -90,18 +86,12 @@ function OrderPage({ orders }) {
         );
     };
 
-    const submitOrder = (id) => {
-        axiosClient.post(`/order/submit/${id}`).then((data) => {
-            setProducts(data.data.data);
-        });
-    };
-
     const actionTemplate = (item) => (
         <div className="flex items-center justify-center">
             {item.status === "Pending" ? (
                 <Button
                     variant="contained"
-                    onClick={() => submitOrder(item.id)}
+                    onClick={() => router.put(`/admin/order-${item.id}`)}
                 >
                     Submit
                 </Button>
@@ -162,7 +152,7 @@ function OrderPage({ orders }) {
                     paginator
                     rows={5}
                     rowsPerPageOptions={[5, 10, 25, 50]}
-                    value={orders}
+                    value={props.orders}
                     expandedRows={expandedRows}
                     onRowToggle={(e) => setExpandedRows(e.data)}
                     rowExpansionTemplate={rowExpansionTemplate}

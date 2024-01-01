@@ -38,7 +38,6 @@ class AuthenticatedSessionController extends Controller
         if ($request->user()->getRoleNames()[0] === "Admin") {
             return redirect("/admin/dashboard");
         }
-        broadcast(new AuthEvent($request->user(), " {{$request->user()->name}} Join"));
         return redirect(RouteServiceProvider::HOME);
     }
 

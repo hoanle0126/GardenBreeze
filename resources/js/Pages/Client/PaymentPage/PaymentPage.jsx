@@ -13,10 +13,9 @@ import BackIcon from "resources/assets/icons/back";
 import TickIcon from "resources/assets/icons/tick";
 
 function PaymentPage({ auth }) {
-    const { selectedProducts, user, setUser } = useStateContext();
+    const { selectedProducts, setSelectedProducts } = useStateContext();
     const [changeAddress, setChangeAddress] = useState(false);
     const [open, setOpen] = useState(false);
-    console.log(auth.user);
 
     const purchase = () => {
         router.post(route("order.store"),selectedProducts,{
@@ -24,7 +23,7 @@ function PaymentPage({ auth }) {
                 router.visit("/")
             }
         })
-        console.log("asd")
+        console.log(selectedProducts)
     };
 
     const sumTotal = () => {

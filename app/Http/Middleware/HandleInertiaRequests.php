@@ -6,7 +6,9 @@ use App\Http\Resources\ProductResource;
 use App\Http\Resources\UserResource;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -39,7 +41,8 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user() ? new UserResource($request->user()) : $request->user(),
                 "categories" => Category::all(),
                 "products" => ProductResource::collection(Product::all()),
-            ]
+            ],
+            'admin' => new UserResource(User::find(650632))
         ];
     }
 }

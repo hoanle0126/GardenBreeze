@@ -1,11 +1,15 @@
 import AdminLayout from "@/Layouts/AdminLayout";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import RevenueCard from "./Overview/RevenueCard";
 import AverageSaleCard from "./Overview/AverageSaleCard";
 import OrdersCard from "./Overview/OrdersCard";
 import NewCustomesCard from "./Overview/NewCustomesCard";
 import RightCard from "./Overview/RightCard";
+import RecentsCard from "./Recents/RecentsCard";
+import DiscountedProductSales from "./Recents/DiscountedProductSales";
+import ProductsDelivery from "./Products/ProductsDelivery";
+import StockReportCard from "./StockReport/StockReportCard";
 
 export default function Dashboard({ auth }) {
     return (
@@ -27,6 +31,12 @@ export default function Dashboard({ auth }) {
                     <NewCustomesCard />
                 </div>
                 <RightCard />
+            </section>
+            <section className="w-full grid grid-cols-12 gap-[30px]">
+                <RecentsCard />
+                <DiscountedProductSales />
+                <ProductsDelivery/>
+                <StockReportCard/>
             </section>
         </AdminLayout>
     );

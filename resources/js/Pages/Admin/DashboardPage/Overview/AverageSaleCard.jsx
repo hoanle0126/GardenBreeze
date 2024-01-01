@@ -1,25 +1,18 @@
 import { alpha } from "@mui/material";
 import { BarChart, Bar, ResponsiveContainer } from "recharts";
-import { useEffect, useState } from "react";
 import { formatCurrency } from "@/Functions/FormatCurrency";
 import { primary } from "@/Contexts/ColorContext";
+import { usePage } from "@inertiajs/react";
 
 const AverageSaleCard = () => {
-  const [averageSale, setAverageSale] = useState([]);
-  
-  const getAverage = () => {
-    
-  };
-  useEffect(() => {
-    getAverage();
-  }, []);
+  const {props} = usePage()
 
   const average = () => {
     let total = 0;
-    averageSale.forEach((element) => {
+    props.avgSelling.forEach((element) => {
       total += element.avg;
     });
-    total /= averageSale.length;
+    total /= props.avgSelling.length;
     return formatCurrency(total);
   };
 
@@ -37,7 +30,7 @@ const AverageSaleCard = () => {
           <BarChart
             width={150}
             height={40}
-            data={averageSale}
+            data={props.avgSelling}
             margin={{ left: 30, bottom: 20, top: 10 }}
           >
             <Bar dataKey="avg" fill={alpha(primary, 0.7)} />

@@ -36,7 +36,7 @@ function OrderPage() {
           </Link>
           <span>Order</span>
         </div>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-2">
           <div
             className={`flex-center text-[21px] h-[40px] border-b-[4px] font-[600] cursor-pointer duration-300 ${
               tab === 1
@@ -46,16 +46,6 @@ function OrderPage() {
             onClick={() => setTab(1)}
           >
             Pending
-          </div>
-          <div
-            className={`flex-center text-[21px] h-[40px] border-b-[4px] font-[600] cursor-pointer duration-300 ${
-              tab === 2
-                ? "border-primary/70 text-primary/70"
-                : "border-transparent text-black"
-            }`}
-            onClick={() => setTab(2)}
-          >
-            Delivering
           </div>
           <div
             className={`flex-center text-[21px] h-[40px] border-b-[4px] font-[600] cursor-pointer duration-300 ${
@@ -69,7 +59,6 @@ function OrderPage() {
           </div>
         </div>
         {tab===1&&<PendingOrder orders={orders} />}
-        {tab===2&&<DeliveryOrder orders={orders} />}
         {tab===3&&<CompletedOrder orders={orders} />}
       </section>
     </ClientLayout>

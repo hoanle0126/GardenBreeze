@@ -4,6 +4,7 @@ import ProfileIcon from "icons/profile";
 import GearIcon from "icons/gear";
 import LogoutIcon from "icons/logout";
 import { usePage } from "@inertiajs/react";
+import { router } from "@inertiajs/react";
 
 const AvatarAdmin = () => {
     const { props } = usePage();
@@ -67,23 +68,13 @@ const AvatarAdmin = () => {
                         {user?.role}
                     </span>
                 </div>
-                <MenuItem>
+                <MenuItem onClick={()=>router.visit(route("profile.edit"))}>
                     <div className="flex items-center gap-[10px]">
                         <ProfileIcon size={16} primary={"#333"} />
                         <span>Profile</span>
                     </div>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <div className="flex items-center gap-[10px]">
-                        <GearIcon
-                            size={16}
-                            primary={alpha("#000", 0.7)}
-                            secondary={alpha("#000", 0.9)}
-                        />
-                        Setting
-                    </div>
-                </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={() => router.post(route("logout"))}>
                     <div className="flex items-center gap-[10px]">
                         <LogoutIcon
                             size={16}

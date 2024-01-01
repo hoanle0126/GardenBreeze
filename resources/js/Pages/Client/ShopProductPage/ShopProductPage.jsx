@@ -51,16 +51,31 @@ const ShopProductPage = ({ product }) => {
                         <span className="text-[32px] mb-[20px]">
                             ${product.price?.base_price}
                         </span>
-                        <div className="h-[40px] flex gap-[10px]">
-                            <TextInput
-                                type="number"
-                                className="w-[70px] h-[40px] border px-[10px] outline-none"
-                                value={quantity}
-                                onChange={(e) => setQuantity(e.target.value)}
-                            />
+                        <div className="h-[40px] flex gap-[20px]">
+                            <div className="flex">
+                                <button
+                                    className="h-[40px] flex-center w-[40px] border border-r-0 text-[21px] cursor-pointer"
+                                    onClick={() => {
+                                        quantity > 1 &&
+                                            setQuantity(quantity - 1);
+                                    }}
+                                >
+                                    -
+                                </button>
+                                <div className="w-[70px] h-[40px] rounded-none text-center flex-center border px-[10px] outline-none">{quantity}</div>
+                                <button
+                                    className="h-[40px] flex-center w-[40px] border border-l-0 text-[21px] cursor-pointer"
+                                    onClick={() => {
+                                            setQuantity(quantity + 1);
+                                    }}
+                                >
+                                    +
+                                </button>
+                            </div>
                             <Button variant={"contained"} onClick={addCart}>
                                 Add Cart
                             </Button>
+                            <div className="h-[40px] flex items-end">{product.stock.quantity} products remain</div>
                             <AddCartNotification
                                 open={open}
                                 handleClose={() => setOpen(false)}

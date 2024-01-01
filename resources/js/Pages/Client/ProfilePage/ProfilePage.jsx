@@ -3,12 +3,13 @@ import { useState } from "react";
 import Overview from "./Overview";
 import Setting from "./Setting";
 import { AccountCircle, Email, LocationOn } from "@mui/icons-material";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import ClientLayout from "@/Layouts/ClientLayout";
 
-function ProfilePage({auth}) {
+function ProfilePage() {
   const [tab, setTab] = useState("Overview");
-  const [user,setUser] = useState(auth.user)
+  const {props} = usePage()
+  const user = props.auth.user
 
   return (
     <ClientLayout className="flex-col px-[120px] mt-[10px] gap-[20px]">
@@ -57,7 +58,7 @@ function ProfilePage({auth}) {
           <span
             className={`text-[18px] font-[600] h-full flex-center border-b-4 cursor-pointer ${
               tab === "Overview"
-                ? "text-green/70 border-green/70"
+                ? "text-primary/70 border-primary/70"
                 : "text-gray-500 border-transparent"
             }`}
             onClick={() => setTab("Overview")}
@@ -67,7 +68,7 @@ function ProfilePage({auth}) {
           <span
             className={`text-[18px] font-[600] h-full flex-center border-b-4 cursor-pointer ${
               tab === "Setting"
-                ? "text-green/70 border-green/70"
+                ? "text-primary/70 border-primary/70"
                 : "text-gray-500 border-transparent"
             }`}
             onClick={() => setTab("Setting")}
@@ -76,7 +77,7 @@ function ProfilePage({auth}) {
           </span>
         </div>
       </section>
-      {tab === "Overview" && <Overview user={user} setUser={setUser} />}
+      {tab === "Overview" && <Overview/>}
       {tab === "Setting" && <Setting />}
     </ClientLayout>
   );

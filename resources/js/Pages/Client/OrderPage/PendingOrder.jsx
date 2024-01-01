@@ -4,8 +4,11 @@ import { DataTable } from "primereact/datatable";
 import { IconButton } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import { formatCurrency } from "@/Functions/FormatCurrency";
+import { router, usePage } from "@inertiajs/react";
 
-const PendingOrder = ({ orders }) => {
+const PendingOrder = () => {
+  const {props} = usePage()
+  const orders = props.orders
   const orderTable = (item) => (
     <div className="w-full">
       <span className="w-full h-[40px] flex items-center border-b-[2px] border-b-primary/70 pl-[10px] text-primary/70">
@@ -46,7 +49,7 @@ const PendingOrder = ({ orders }) => {
       </div>
       <div className="py-[10px] flex items-center justify-end">
         <div>
-          <IconButton>
+          <IconButton onClick={()=>router.delete(`/order/${item.id}`)}>
             <Delete />
           </IconButton>
         </div>
@@ -57,7 +60,7 @@ const PendingOrder = ({ orders }) => {
   return (
     <div>
       <DataTable
-        value={orders?.pending}
+        value={orders.filter(o=>o.status==="Pending")}
         tableStyle={{ minWidth: "50rem", marginTop: "-40px" }}
       >
         <Column field="id" body={orderTable}></Column>

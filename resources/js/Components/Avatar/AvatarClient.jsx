@@ -146,7 +146,7 @@ const AvatarClient = ({user}) => {
                         </span>
                       </div>
                       <MenuItem
-                        onClick={() => router.visit("/profile")}
+                        onClick={() => router.visit(route("client.edit"))}
                         className="flex gap-[10px] items-center"
                       >
                         <ProfileIcon size={18} primary={alpha("#000", 0.7)} />
