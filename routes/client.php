@@ -37,5 +37,12 @@ Route::get('/contact', function () {
 Route::middleware(["auth", "role:Client"])->group(function () {
     Route::resource("/cart", CartController::class);
     Route::resource("/payment", OrderController::class);
+    Route::post("/payment", [OrderController::class, "store"])->name("order.store");
     Route::post("/cart/{product}", [CartController::class, "create"]);
+    Route::get("/order",function(){
+        return Inertia::render("Client/OrderPage/OrderPage");
+    });
+    Route::get("/profile",function(){
+        return Inertia::render("Client/ProfilePage/ProfilePage");
+    });
 });

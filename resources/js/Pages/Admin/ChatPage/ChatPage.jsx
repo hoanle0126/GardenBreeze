@@ -1,15 +1,28 @@
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import { Avatar, Button } from "@mui/material";
+import { useState } from "react";
 
 function ChatPage() {
+    const [members, setMembers] = useState([]);
+    const { props } = usePage();
+    Echo.join("chat")
+        .here((users) => {
+            setMembers(users.filter((user) => user.id !== props.auth.user.id));
+        })
+        .joining((user) => {
+            setMembers([...members, user]);
+        })
+        .leaving((user) => {
+            setMembers(members.filter((member) => member !== user));
+        });
     return (
         <AdminLayout>
-            <Head title="Chat"/>
+            <Head title="Chat" />
             <section className="header__top">
                 <span className="header__top--header">Chat</span>
                 <div className="header__top--breadcrumbs">
-                <span className="text-gray-1 font-[600]">Home</span>
+                    <span className="text-gray-1 font-[600]">Home</span>
                     <span className="text-gray-1 font-[600]">/</span>
                     <span className=" font-[600] text-dark">Chat</span>
                 </div>
@@ -23,24 +36,22 @@ function ChatPage() {
                         className="outline-none bg-gray-200/70 w-full h-[40px] rounded-lg p-[10px]"
                     />
                     <div className="w-full h-[400px] overflow-y-scroll overflow-x-hidden flex flex-col gap-[15px]">
-                        {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(
-                            (index) => (
-                                <div
-                                    key={index}
-                                    className="flex gap-[20px] items-center h-[40px] w-full"
-                                >
-                                    <Avatar />
-                                    <div className="flex flex-col">
-                                        <span className="text-[18px] line-clamp-1 font-[600]">
-                                            Hoan
-                                        </span>
-                                        <span className="text-[14px] line-clamp-1 w-[230px] text-gray-600">
-                                            HoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoan
-                                        </span>
-                                    </div>
+                        {members.map((member, index) => (
+                            <div
+                                key={index}
+                                className="flex gap-[20px] items-center h-[40px] w-full"
+                            >
+                                <Avatar />
+                                <div className="flex flex-col">
+                                    <span className="text-[18px] line-clamp-1 font-[600]">
+                                        Hoan {member.id}
+                                    </span>
+                                    <span className="text-[14px] line-clamp-1 w-[230px] text-gray-600">
+                                        HoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoanHoan
+                                    </span>
                                 </div>
-                            )
-                        )}
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div className="card col-span-8 flex flex-col justify-between">

@@ -13,7 +13,7 @@ import { FilterMatchMode } from "primereact/api";
 import SearchIcon from "icons/search";
 import ThreeDotIcon from "icons/ThreeDot";
 import PopupState, { bindMenu, bindTrigger } from "material-ui-popup-state";
-import { Head, Link, usePage } from "@inertiajs/react";
+import { Head, Link, router, usePage } from "@inertiajs/react";
 import { primary, secondary } from "@/Contexts/ColorContext";
 import AdminLayout from "@/Layouts/AdminLayout";
 
@@ -60,7 +60,10 @@ function CategoriesPage({ categories }) {
                 </div>
                 <div className="flex items-center gap-[20px]">
                     <Button variant={"outlined"}>Upload</Button>
-                    <Button variant={"contained"} to={"/category/add"}>
+                    <Button
+                        variant={"contained"}
+                        onClick={() => router.visit("/admin/categories-add")}
+                    >
                         New Category
                     </Button>
                 </div>
@@ -81,8 +84,20 @@ function CategoriesPage({ categories }) {
                                 <ThreeDotIcon size={18} primary={"#6C6C6C"} />
                             </IconButton>
                             <Menu {...bindMenu(popupState)}>
-                                <MenuItem>View</MenuItem>
-                                <MenuItem onClick={popupState.close}>
+                                <MenuItem
+                                    onClick={() =>
+                                        router.visit(
+                                            `/admin/categories-${item.id}`
+                                        )
+                                    }
+                                >
+                                    View
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() =>
+                                        router.delete(`/categories-${item.id}`)
+                                    }
+                                >
                                     Delete
                                 </MenuItem>
                             </Menu>

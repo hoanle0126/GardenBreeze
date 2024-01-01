@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -29,7 +31,25 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $total = 0;
+        $order = Order::create([
+            'user_id' => $request->User()->id,
+            'status' => 'Pending',
+            'total' => $total
+        ]);
+        $products = $request->products;
+        foreach ($products as $product) {
+            $order->product()->attach(Product::find($product['id']), [
+                'quantity' => $product['pivot']['quantity'],
+                'category_id' => $product['category_id']
+            ]);
+            $total += $product['price']['base_price'] * $product['pivot']['quantity'];
+            $cart = Cart::query()->where('user_id', $request->user()->id)->first();
+            $cart->Product()->detach($product['id']);
+        }
+        $order->update([
+            'total' => $total
+        ]);
     }
 
     /**

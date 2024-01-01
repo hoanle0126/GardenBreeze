@@ -146,14 +146,14 @@ const AvatarClient = ({user}) => {
                         </span>
                       </div>
                       <MenuItem
-                        onClick={handleClose}
+                        onClick={() => router.visit("/profile")}
                         className="flex gap-[10px] items-center"
                       >
                         <ProfileIcon size={18} primary={alpha("#000", 0.7)} />
                         <span>Profile</span>
                       </MenuItem>
                       <MenuItem
-                        onClick={() => navigate("/order")}
+                        onClick={() => router.visit("/order")}
                         className="flex gap-[10px] items-center"
                       >
                         <OrderIcon size={18} primary={alpha("#000", 0.7)} />

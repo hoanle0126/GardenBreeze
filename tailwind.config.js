@@ -30,6 +30,12 @@ export default {
                 footer: "url('resources/assets/footer.png')",
                 contact: "url('resources/assets/contact.png')",
             },
+            fontSize: {
+              default: "14px",
+              sm: "18px",
+              md: "23px",
+              lg: "32px",
+            },
         },
     },
 

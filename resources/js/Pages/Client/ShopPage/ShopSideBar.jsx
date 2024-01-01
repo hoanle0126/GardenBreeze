@@ -30,7 +30,7 @@ const ShopSideBar = ({ categories, filter, setFilter }) => {
             </div>
             <div className="w-full">
                 <div className="pl-[120px] flex flex-col w-full justify-end gap-[10px] border-b py-[30px]">
-                    <span className="font-[600] text-green-main-dark">
+                    <span className="font-[600] text-primary-main-dark">
                         Categories
                     </span>
                     {categories?.map((category) => (
@@ -52,7 +52,7 @@ const ShopSideBar = ({ categories, filter, setFilter }) => {
                     ))}
                 </div>
                 <div className="pl-[120px] pr-[60px] flex flex-col w-full items-start gap-[10px] py-[30px] border-b">
-                    <span className="font-[600] text-green-main-dark">
+                    <span className="font-[600] text-primary-main-dark">
                         Price range
                     </span>
                     <Slider
@@ -67,7 +67,7 @@ const ShopSideBar = ({ categories, filter, setFilter }) => {
                     </Button>
                 </div>
                 <div className="pl-[120px] flex flex-col w-full items-start gap-[10px] py-[30px]">
-                    <span className="font-[600] text-green-main-dark">
+                    <span className="font-[600] text-primary-main-dark">
                         Rating
                     </span>
                     {[5, 4, 3, 2, 1].map((item) => (

@@ -59,7 +59,60 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'thumbnail' => $request->thumbnail,
+            'category_id' => $request->category['id']
+        ]);
+
+        $images = $request->get('images');
+
+        if ($images) {
+            foreach ($images as $image) {
+                $product->Image()->create([
+                    'src' => $image['src'],
+                    'product_id' => $product->id
+                ]);
+            }
+        }
+
+        $product->Price()->create([
+            'base_price' => $request->price['base_price'],
+            'sales' => $request->price['sales'],
+        ]);
+
+        if ($request->feature) {
+            $product->Feature()->create([
+                'common_name' => $request->feature['common_name'],
+                'science_name' => $request->feature['science_name'],
+                'plant_family' => $request->feature['plant_family'],
+                'source' => $request->feature['source'],
+            ]);
+        }
+
+        $stock = $request->stock;
+        if ($stock) {
+            $product->Stock()->create([
+                'quantity' => $stock['quantity'],
+                'status' => "On Stock"
+            ]);
+        }
+        if ($product->Stock()->first()['quantity'] >= 10) {
+            $product->Stock()->update([
+                'status' => 'On Stock',
+            ]);
+        } else if ($product->Stock()->first()['quantity'] == 0) {
+            $product->Stock()->update([
+                'status' => 'Out of Stock',
+            ]);
+        } else if ($product->Stock()->first()['quantity'] < 10) {
+            $product->Stock()->update([
+                'status' => 'Low Stock',
+            ]);
+        }
+
+        return new ProductResource($product);
     }
 
     /**

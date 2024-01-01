@@ -30,7 +30,7 @@ const ReviewProduct = ({ product }) => {
                                 src={rv.user?.avatar}
                                 sx={{ width: "30px", height: "30px" }}
                             />
-                            <span className="text-[21px] font-[600] text-green-main-dark">
+                            <span className="text-[21px] font-[600] text-primary-main-dark">
                                 {rv.user?.name}
                             </span>
                             <Rating size="small" value={rv?.rating} readOnly />

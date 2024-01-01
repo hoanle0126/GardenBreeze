@@ -65,7 +65,7 @@ const SortComponent = ({filter,setFilter}) => {
                     Lastest
                 </MenuItem>
             </Menu>
-            <div className="border h-[40px] px-[15px] rounded-lg flex items-center gap-[0px] text-green/70 border-green/70 cursor-default">
+            <div className="border h-[40px] px-[15px] rounded-lg flex items-center gap-[0px] text-primary/70 border-primary/70 cursor-default">
                 <span>
                     {filter.sort}
                 </span>

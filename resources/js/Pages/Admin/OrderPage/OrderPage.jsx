@@ -2,10 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Toast } from "primereact/toast";
-import { Button, CircularProgress, IconButton } from "@mui/material";
+import { Avatar, Button, CircularProgress, IconButton } from "@mui/material";
 import TickIcon from "icons/tick";
 import { Head, Link } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
+import { formatCurrency } from "@/Functions/FormatCurrency";
 
 function OrderPage({ orders }) {
     console.log(orders);
@@ -31,10 +32,9 @@ function OrderPage({ orders }) {
 
     const userTemplate = (item) => (
         <div className="flex items-center gap-[10px]">
-            <img
+            <Avatar
                 src={item.user?.avatar}
-                alt={item.user?.name}
-                className="w-[40px] h-[40px] rounded-md"
+                sx={{width:40,height:40}}
             />
             <span>{item.user?.name}</span>
         </div>

@@ -7,7 +7,7 @@ const StartSection = () => {
         <div className="h-screen">
             <section className="absolute bg-landing h-full bg-cover pt-[60px]">
                 <div className="w-[45%] pt-[80px]  flex flex-col gap-[20px]">
-                    <div className="text-[64px] font-[700] text-green-main-dark">
+                    <div className="text-[64px] font-[700] text-primary-main-dark">
                         Take Care Of The Trees, They Will Take Care Of{" "}
                         <span className="text-secondary/70">You.</span>
                     </div>

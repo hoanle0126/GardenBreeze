@@ -2,7 +2,7 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import { useEffect } from "react";
 import ColorContext from "@/Contexts/ColorContext";
-import LogoEvergreen from "resources/assets/logo";
+import LogoEverprimary from "resources/assets/logo";
 import RightAdmin from "./Right/RightAdmin";
 import { Link } from "@inertiajs/react";
 
@@ -10,7 +10,7 @@ const AdminHeader = ({ side, setSide }) => {
     return (
         <header className="h-[60px] w-full flex items-center justify-between bg-white fixed top-0 shadow-md z-[1000] px-[20px]">
             <Link href="dashboard" className="flex h-full items-center">
-                <LogoEvergreen
+                <LogoEverprimary
                     primary={ColorContext.palette.primary.main}
                     size={50}
                 />

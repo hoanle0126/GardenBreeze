@@ -1,7 +1,7 @@
 import { primary, secondary } from "@/Contexts/ColorContext";
 import { formatCurrency } from "@/Functions/FormatCurrency";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, router } from "@inertiajs/react";
 import { Button, IconButton, Menu, MenuItem, Rating, alpha } from "@mui/material";
 import PopupState, { bindMenu, bindTrigger } from "material-ui-popup-state";
 import { FilterMatchMode } from "primereact/api";
@@ -61,7 +61,7 @@ function StockPage({ stocks }) {
                             Delete All Selected
                         </Button>
                     )}
-                    <Button variant={"contained"} to={"/stock/add"}>
+                    <Button variant={"contained"} onClick={()=>router.visit("/admin/stock-add")}>
                         Add Product
                     </Button>
                 </div>
@@ -90,8 +90,8 @@ function StockPage({ stocks }) {
                             <Menu {...bindMenu(popupState)}>
                                 <MenuItem
                                     onClick={() =>
-                                        navigate(
-                                            `/stock/view/${item.product?.id}`
+                                        router.visit(
+                                            `/admin/stock-${item.product?.id}`
                                         )
                                     }
                                 >
@@ -99,7 +99,7 @@ function StockPage({ stocks }) {
                                 </MenuItem>
                                 <MenuItem
                                     onClick={() =>
-                                        deleteProduct(item.product?.id)
+                                        router.delete(`/stock/${item.product?.id}`)
                                     }
                                 >
                                     Delete

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
@@ -29,7 +30,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = Category::create([
+            'name' => $request->name,
+            'thumbnail' => $request->thumbnail
+        ]);
     }
 
     /**
@@ -37,7 +41,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return Inertia::render("Admin/CategoriesPage/View/index", [
+            "category" => $category
+        ]);
     }
 
     /**
@@ -53,7 +59,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update([
+            'name' => $request->name,
+            'thumbnail' => $request->thumbnail,
+        ]);
     }
 
     /**
@@ -61,6 +70,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
     }
 }

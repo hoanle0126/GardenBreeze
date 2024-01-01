@@ -5,7 +5,7 @@ function BlogSection() {
         <span className="text-[21px] font-[600] text-orange-primary">
           Our Services
         </span>
-        <span className="text-[32px] font-[700] text-green-main-dark text-gr">
+        <span className="text-[32px] font-[700] text-primary-main-dark text-gr">
           Our Top Selling Plants & Trees
         </span>
       </div>

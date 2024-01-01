@@ -21,7 +21,7 @@ const CategoriesSection = ({ categories }) => {
                             className="w-[100px] h-[100px]"
                         />
                         <div className="pl-[20px] flex-1 h-full flex flex-col gap-[10px] justify-center">
-                            <div className="text-[21px] font-[600] text-green-main-dark">
+                            <div className="text-[21px] font-[600] text-primary-main-dark">
                                 {category.name}
                             </div>
                             <div className="text-[14px] text-gray-500">

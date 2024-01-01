@@ -2,7 +2,7 @@ import { useStateContext } from "@/Contexts/ApiContext";
 import { primary, secondary } from "@/Contexts/ColorContext";
 import { formatCurrency } from "@/Functions/FormatCurrency";
 import ClientLayout from "@/Layouts/ClientLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, router } from "@inertiajs/react";
 import { Button, Modal, alpha } from "@mui/material";
 import { Column } from "primereact/column";
 import { ColumnGroup } from "primereact/columngroup";
@@ -19,7 +19,12 @@ function PaymentPage({ auth }) {
     console.log(auth.user);
 
     const purchase = () => {
-        //
+        router.post(route("order.store"),selectedProducts,{
+            onSuccess:()=>{
+                router.visit("/")
+            }
+        })
+        console.log("asd")
     };
 
     const sumTotal = () => {

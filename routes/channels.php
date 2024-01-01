@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel("chat",function($user){
+    if($user!=null){
+        return $user;
+    }
+    return false;
+});
+
+Broadcast::channel('chat.message.{receiver_id}', function ($user, $receiver_id) {
+    return (int) $user->id === (int) $receiver_id;
+});

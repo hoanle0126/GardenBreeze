@@ -12,7 +12,7 @@ const ServiceSection = () => {
           secondary={ColorContext.palette.secondary.main}
           size={140}
         />
-        <span className="text-[21px] font-[600] text-green-main-dark">
+        <span className="text-[21px] font-[600] text-primary-main-dark">
           Security Payment
         </span>
         <span className="text-center w-[90%] text-gray-500">
@@ -26,7 +26,7 @@ const ServiceSection = () => {
           secondary={ColorContext.palette.secondary.main}
           size={140}
         />
-        <span className="text-[21px] font-[600] text-green-main-dark">
+        <span className="text-[21px] font-[600] text-primary-main-dark">
           Free Shipping
         </span>
         <span className="text-center w-[90%] text-gray-500">
@@ -40,7 +40,7 @@ const ServiceSection = () => {
           secondary={ColorContext.palette.secondary.main}
           size={140}
         />
-        <span className="text-[21px] font-[600] text-green-main-dark">
+        <span className="text-[21px] font-[600] text-primary-main-dark">
           90 Days Return
         </span>
         <span className="text-center w-[90%] text-gray-500">

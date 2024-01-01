@@ -27,13 +27,13 @@ const productTemplate = (item) => {
           <img src={item.thumbnail} alt="" className="w-[90%] h-[90%]" />
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-[21px] text-green-main-dark font-[600] w-[100%-20px] text-center line-clamp-1">
+          <span className="text-[21px] text-primary-main-dark font-[600] w-[100%-20px] text-center line-clamp-1">
             {item?.name}
           </span>
           <span className="text-[14px] text-gray-500 text-left w-[90%] line-clamp-2">
             {item?.description}
           </span>
-          <span className="text-[32px] mt-[10px] text-green-main-dark">
+          <span className="text-[32px] mt-[10px] text-primary-main-dark">
             ${formatCurrency(item.price.base_price)}
           </span>
         </div>

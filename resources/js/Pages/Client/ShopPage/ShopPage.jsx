@@ -63,7 +63,7 @@ function ShopPage({ categories }) {
                                 />
                                 <div className="flex flex-col items-start w-full pt-[10px] justify-between flex-1">
                                     <div>
-                                        <span className="text-[21px] font-[600] text-green-main-dark line-clamp-1">
+                                        <span className="text-[21px] font-[600] text-primary-main-dark line-clamp-1">
                                             {product.name}
                                         </span>
                                         <span className="flex items-center gap-[5px]">
@@ -75,7 +75,7 @@ function ShopPage({ categories }) {
                                         </span>
                                     </div>
                                     <div className="flex w-full justify-between">
-                                        <span className="text-[24px] text-green-main-dark">
+                                        <span className="text-[24px] text-primary-main-dark">
                                             {formatCurrency(
                                                 product.price?.base_price - 0
                                             )}

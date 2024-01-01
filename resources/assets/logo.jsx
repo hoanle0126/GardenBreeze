@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const LogoEvergreen = ({ primary, size }) => {
+const LogoEverprimary = ({ primary, size }) => {
   return (
     <svg viewBox="0 0 45 44.999999" width={size} height={size}>
       <g>
@@ -12,4 +12,4 @@ const LogoEvergreen = ({ primary, size }) => {
   );
 };
 
-export default LogoEvergreen;
+export default LogoEverprimary;

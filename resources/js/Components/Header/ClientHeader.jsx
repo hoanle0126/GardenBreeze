@@ -2,7 +2,7 @@ import { Button, alpha } from "@mui/material";
 import React from "react";
 import AvatarClient from "../Avatar/AvatarClient";
 import { Link, router, usePage } from "@inertiajs/react";
-import LogoEvergreen from "resources/assets/logo";
+import LogoEverprimary from "resources/assets/logo";
 import { primary } from "@/Contexts/ColorContext";
 import CartIconButton from "../IconButton/Cart";
 import MessageIconButton from "../IconButton/Message";
@@ -30,7 +30,7 @@ const ClientHeader = ({ user }) => {
             }`}
         >
             <Link href="/" className="flex items-center text-[24px] font-[600]">
-                <LogoEvergreen size={40} primary={alpha(primary, 0.7)} />
+                <LogoEverprimary size={40} primary={alpha(primary, 0.7)} />
                 <span>Garden</span>
             </Link>
             <div className="flex gap-[20px] h-full text-[18px] items-center w-[30%] justify-between font-[600]">
