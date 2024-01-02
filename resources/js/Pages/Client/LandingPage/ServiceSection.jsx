@@ -5,7 +5,7 @@ import ColorContext from "@/Contexts/ColorContext";
 
 const ServiceSection = () => {
   return (
-    <section className="w-full flex justify-between">
+    <section className="w-full flex justify-between overflow-auto gap-[30px]">
       <div className="w-[300px] h-[300px] flex flex-col items-center justify-center">
         <PaymentsIcon
           primary={ColorContext.palette.primary.main}
@@ -15,7 +15,7 @@ const ServiceSection = () => {
         <span className="text-[21px] font-[600] text-primary-main-dark">
           Security Payment
         </span>
-        <span className="text-center w-[90%] text-gray-500">
+        <span className="text-center w-[90%] text-gray-500  lg:block hidden">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </span>
@@ -29,7 +29,7 @@ const ServiceSection = () => {
         <span className="text-[21px] font-[600] text-primary-main-dark">
           Free Shipping
         </span>
-        <span className="text-center w-[90%] text-gray-500">
+        <span className="text-center w-[90%] text-gray-500  lg:block hidden">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </span>
@@ -43,7 +43,7 @@ const ServiceSection = () => {
         <span className="text-[21px] font-[600] text-primary-main-dark">
           90 Days Return
         </span>
-        <span className="text-center w-[90%] text-gray-500">
+        <span className="text-center w-[90%] text-gray-500  lg:block hidden">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </span>

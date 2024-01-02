@@ -24,12 +24,12 @@ const ShopSideBar = ({ categories, filter, setFilter }) => {
     }, [rating]);
 
     return (
-        <aside className="w-[450px]">
-            <div className="pl-[120px] w-full h-[60px] border-b flex items-center text-[21px] font-[600]">
+        <aside className="w-[450px] lg:block hidden">
+            <div className="lg:pl-[120px] pl-[30px] w-full h-[60px] border-b flex items-center text-[21px] font-[600]">
                 Filter
             </div>
             <div className="w-full">
-                <div className="pl-[120px] flex flex-col w-full justify-end gap-[10px] border-b py-[30px]">
+                <div className="lg:pl-[120px] pl-[30px] flex flex-col w-full justify-end gap-[10px] border-b py-[30px]">
                     <span className="font-[600] text-primary-main-dark">
                         Categories
                     </span>
@@ -51,7 +51,7 @@ const ShopSideBar = ({ categories, filter, setFilter }) => {
                         </span>
                     ))}
                 </div>
-                <div className="pl-[120px] pr-[60px] flex flex-col w-full items-start gap-[10px] py-[30px] border-b">
+                <div className="lg:pl-[120px] pl-[30px] pr-[60px] flex flex-col w-full items-start gap-[10px] py-[30px] border-b">
                     <span className="font-[600] text-primary-main-dark">
                         Price range
                     </span>
@@ -66,7 +66,7 @@ const ShopSideBar = ({ categories, filter, setFilter }) => {
                         Set Price
                     </Button>
                 </div>
-                <div className="pl-[120px] flex flex-col w-full items-start gap-[10px] py-[30px]">
+                <div className="lg:pl-[120px] pl-[30px] flex flex-col w-full items-start gap-[10px] py-[30px]">
                     <span className="font-[600] text-primary-main-dark">
                         Rating
                     </span>

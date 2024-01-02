@@ -10,7 +10,7 @@ function LandingPage({ categories, products, auth }) {
     
     return (
         <ClientLayout
-            className="-mt-[60px] px-[120px] flex-col gap-[90px]"
+            className="-mt-[60px] lg:px-[120px] px-[30px] flex-col gap-[90px]"
             user={auth.user}
         >
             <Head title="Welcome to Garden" />

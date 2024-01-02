@@ -38,6 +38,7 @@ Route::get('/contact', function () {
     ]);
 });
 
+
 Route::middleware(["auth", "role:Client","verified"])->group(function () {
     Route::resource("/cart", CartController::class);
     Route::resource("/payment", OrderController::class);

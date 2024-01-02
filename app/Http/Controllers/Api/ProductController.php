@@ -31,18 +31,18 @@ class ProductController extends Controller
             $q->where('base_price', '<', $request->price[1]);
         });
 
-        // // Sort
-        // if ($request->has('sort') && $request->sort == "Decrease By Price") {
-        //     $product->join('prices', 'products.id', '=', 'prices.product_id')->orderByDesc('prices.base_price')->select('products.*');
-        // }
+        // Sort
+        if ($request->has('sort') && $request->sort == "Decrease By Price") {
+            $product->join('prices', 'products.id', '=', 'prices.product_id')->orderByDesc('prices.base_price')->select('products.*');
+        }
 
-        // if ($request->has('sort') && $request->sort == "Increase By Price") {
-        //     $product->join('prices', 'products.id', '=', 'prices.product_id')->orderBy('prices.base_price')->select('products.*');
-        // }
+        if ($request->has('sort') && $request->sort == "Increase By Price") {
+            $product->join('prices', 'products.id', '=', 'prices.product_id')->orderBy('prices.base_price')->select('products.*');
+        }
 
-        // if ($request->has('sort') && $request->sort == "Latest") {
-        //     $product->latest();
-        // }
+        if ($request->has('sort') && $request->sort == "Latest") {
+            $product->latest();
+        }
 
         return ProductResource::collection($product->paginate(9));
     }

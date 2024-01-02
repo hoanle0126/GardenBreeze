@@ -24,6 +24,6 @@ Broadcast::channel("chat",function($user){
     return false;
 });
 
-Broadcast::channel('chat.message.{receiver_id}', function ($user, $receiver_id) {
+Broadcast::channel('chat.greet.{receiver_id}', function ($user, $receiver_id) {
     return (int) $user->id === (int) $receiver_id;
 });

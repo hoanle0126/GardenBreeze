@@ -9,11 +9,11 @@ const CategoriesSection = ({ categories }) => {
                     Our Categories
                 </span>
             </div>
-            <div className="w-full max-h-[380px] overflow-hidden grid grid-cols-12 gap-[40px]">
+            <div className="w-full lg:max-h-[420px] max-h-[180px] lg:overflow-hidden overflow-x-auto overflow-y-hidden lg:grid flex grid-cols-12 gap-[40px]">
                 {categories.map((category) => (
                     <div
                         key={category.id}
-                        className="col-span-4 h-[100px] flex"
+                        className="col-span-4 lg:h-[180px] h-[100px] lg:flex flex-col"
                     >
                         <img
                             src={category.thumbnail}
@@ -24,7 +24,7 @@ const CategoriesSection = ({ categories }) => {
                             <div className="text-[21px] font-[600] text-primary-main-dark">
                                 {category.name}
                             </div>
-                            <div className="text-[14px] text-gray-500">
+                            <div className="text-[14px] text-gray-500 lg:block hidden">
                                 Lorem Ipsum is simply dummy text of the printing
                                 and typesetting industry.
                             </div>

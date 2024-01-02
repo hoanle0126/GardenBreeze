@@ -41,6 +41,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user() ? new UserResource($request->user()) : $request->user(),
                 "categories" => Category::all(),
                 "products" => ProductResource::collection(Product::all()),
+                "members" => UserResource::collection(User::all())
             ],
             'admin' => new UserResource(User::find(650632))
         ];

@@ -50,7 +50,7 @@ function ShopPage({ categories }) {
                         <CircularProgress />
                     </div>
                 ) : (
-                    <section className="w-full max-h-[1200px] grid grid-cols-3 gap-[60px]  overflow-hidden pl-[60px] pr-[120px] py-[30px] ">
+                    <section className="w-full max-h-[1200px] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[60px]  overflow-hidden pl-[60px] lg:pr-[120px] pr-[30px] py-[30px] ">
                         {products?.map((product) => (
                             <div
                                 key={product.id}
@@ -59,7 +59,7 @@ function ShopPage({ categories }) {
                                 <img
                                     src={product.thumbnail}
                                     alt={product.thumbnail}
-                                    className="w-[220px] h-[180px]"
+                                    className="w-[100%] h-[180px]"
                                 />
                                 <div className="flex flex-col items-start w-full pt-[10px] justify-between flex-1">
                                     <div>

@@ -8,7 +8,7 @@ import CartIconButton from "../IconButton/Cart";
 import MessageIconButton from "../IconButton/Message";
 
 const ClientHeader = ({ user }) => {
-    const { url } = usePage();
+    const { url,props } = usePage();
     const [header, setHeader] = React.useState(true);
 
     React.useEffect(() => {
@@ -23,7 +23,7 @@ const ClientHeader = ({ user }) => {
     }, []);
     return (
         <header
-            className={`duration-100 flex justify-between px-[120px] h-[60px] top-0 left-0 items-center w-full fixed z-[1000] border-b ${
+            className={`duration-100 flex justify-between lg:px-[120px] px-[30px] h-[60px] top-0 left-0 items-center w-full fixed z-[1000] border-b ${
                 url !== "/" || !header
                     ? "border-gray-200  bg-[#f9f9f9]"
                     : "border-transparent"
@@ -33,7 +33,7 @@ const ClientHeader = ({ user }) => {
                 <LogoEverprimary size={40} primary={alpha(primary, 0.7)} />
                 <span>Garden</span>
             </Link>
-            <div className="flex gap-[20px] h-full text-[18px] items-center w-[30%] justify-between font-[600]">
+            <div className="md:flex hidden gap-[20px] h-full text-[18px] items-center w-[30%] justify-between font-[600]">
                 <Link
                     href={"/"}
                     className={`${url === "/" && "text-primary/70"}`}

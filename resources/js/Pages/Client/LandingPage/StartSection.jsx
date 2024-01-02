@@ -5,8 +5,8 @@ import React from "react";
 const StartSection = () => {
     return (
         <div className="h-screen">
-            <section className="absolute bg-landing h-full bg-cover pt-[60px]">
-                <div className="w-[45%] pt-[80px]  flex flex-col gap-[20px]">
+            <section className="absolute bg-landing h-full bg-cover lg:pt-[60px] pt-[0px]">
+                <div className="lg:w-[45%] pt-[80px]  flex flex-col lg:gap-[20px] gap-[10px]">
                     <div className="text-[64px] font-[700] text-primary-main-dark">
                         Take Care Of The Trees, They Will Take Care Of{" "}
                         <span className="text-secondary/70">You.</span>
@@ -18,7 +18,7 @@ const StartSection = () => {
                         took a galley of type and scrambled it to make a type
                         specimen book.
                     </div>
-                    <div className="mt-[80px] flex gap-[30px]">
+                    <div className="lg:mt-[80px] mt-[30px] flex gap-[30px]">
                         <Button
                             variant="contained"
                             sx={{

@@ -64,23 +64,10 @@ const AdminSidebar = ({ side }) => {
             name: "Member",
             active:
                 active === 3 ||
-                url.startsWith("/admin/customer") ||
-                url.startsWith("/admin/staff")
+                url.startsWith("/admin/customer")
                     ? true
                     : false,
-            heightChild: "70px",
-            children: [
-                {
-                    id: 1,
-                    name: "Customer",
-                    to: "/admin/customer",
-                },
-                {
-                    id: 2,
-                    name: "Staff",
-                    to: "/admin/staff",
-                },
-            ],
+            to: "/admin/customer",
         },
         {
             id: 4,
@@ -194,10 +181,7 @@ const AdminSidebar = ({ side }) => {
                                         key={child.id}
                                         href={child.to}
                                         className={`first:mt-[10px] flex items-center gap-[5px] ${
-                                            location.pathname ===
-                                                `${child.to}` ||
-                                            location.pathname ===
-                                                `${child.to}/add`
+                                            url.startsWith(child.to)
                                                 ? "text-primary/70"
                                                 : "text-black"
                                         }`}
@@ -205,10 +189,7 @@ const AdminSidebar = ({ side }) => {
                                         <data.childrenIcon
                                             size={15}
                                             primary={
-                                                location.pathname ===
-                                                    `${child.to}` ||
-                                                location.pathname ===
-                                                    `${child.to}/add`
+                                                url.startsWith(child.to)
                                                     ? alpha(primary, 0.7)
                                                     : "#000"
                                             }
